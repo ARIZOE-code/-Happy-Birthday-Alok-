@@ -7,43 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading -->
-    <div id="loading" class="loading">
-        <h2>Initializing Birthday Surprise for Alok...</h2>
-        <div class="progress"></div>
-    </div>
+    <div id="loading" class="loading">Initializing Surprise for Alok...</div>
 
-    <div class="main-content">
-        <!-- Hero -->
+    <div class="main">
         <header class="hero">
-            <div class="hero-content">
-                <h1>Happy Birthday,<br><span>Alok!</span> 🎂</h1>
-                <p>Wishing you joy, success & unforgettable moments ❤️</p>
-                <button onclick="startParty()">Start the Celebration 🎉</button>
-            </div>
-            <img src="assets/hero-photo.jpg" alt="Alok" class="hero-img">
+            <h1>Happy Birthday Alok! 🎂</h1>
+            <img src="assets/hero-photo.jpg" class="hero-photo">
+            <button onclick="startParty()">Start Celebration 🎉</button>
         </header>
 
         <section class="memories">
             <h2>Beautiful Memories</h2>
             <div class="gallery">
-                <img src="assets/memory-1.jpg" alt="">
-                <img src="assets/memory-2.jpg" alt="">
-                <img src="assets/memory-3.jpg" alt="">
-                <img src="assets/memory-4.jpg" alt="">
+                <img src="assets/memory-1.jpg">
+                <img src="assets/memory-2.jpg">
+                <img src="assets/memory-3.jpg">
+                <img src="assets/memory-4.jpg">
             </div>
-        </section>
-
-        <section class="message-box">
-            <h2>A Special Wish</h2>
-            <p id="typed-message"></p>
-        </section>
-
-        <section class="wishes">
-            <h2>Send Your Wish</h2>
-            <textarea id="wish" placeholder="Alok ke liye wish likho..."></textarea>
-            <button onclick="addWish()">Send Wish</button>
-            <div id="wish-list"></div>
         </section>
     </div>
 
