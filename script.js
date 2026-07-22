@@ -1,110 +1,66 @@
-* { margin:0; padding:0; box-sizing:border-box; }
+// Loading
+setTimeout(() => {
+    document.getElementById('loading').style.display = 'none';
+    document.querySelector('.main-content').style.display = 'block';
+}, 4200);
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(45deg, #1e3c72, #ff4081);
-    color: white;
-    min-height: 100vh;
-    overflow-x: hidden;
+// Typing effect for message
+const message = "Bhagwan tumhe hamesha khush rakhe. Tumhari har wish puri ho. Jaldi ek accha life partner mile aur zindagi khushiyon se bhari rahe. Happy Birthday Alok! ❤️";
+let i = 0;
+const typed = document.getElementById('typed-message');
+
+function type() {
+    if (i < message.length) {
+        typed.innerHTML += message.charAt(i);
+        i++;
+        setTimeout(type, 50);
+    }
 }
 
-.loading {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: #000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    color: white;
+setTimeout(type, 1000);
+
+// Confetti
+function launchConfetti() {
+    for (let i = 0; i < 200; i++) {
+        setTimeout(() => {
+            const conf = document.createElement('div');
+            conf.textContent = ['🎉','🎊','❤️','✨'][Math.floor(Math.random()*4)];
+            conf.style.position = 'fixed';
+            conf.style.left = Math.random()*100 + 'vw';
+            conf.style.top = '-50px';
+            conf.style.fontSize = '2rem';
+            document.body.appendChild(conf);
+            let y = 0;
+            const speed = 5 + Math.random() * 8;
+            function fall() {
+                y += speed;
+                conf.style.top = y + 'vh';
+                if (y < 120) requestAnimationFrame(fall);
+                else conf.remove();
+            }
+            fall();
+        }, i*8);
+    }
 }
 
-.progress {
-    width: 300px;
-    height: 6px;
-    background: #333;
-    margin-top: 20px;
-    border-radius: 10px;
-    overflow: hidden;
+function startParty() {
+    launchConfetti();
+    alert("🎉 Party Shuru! Enjoy Alok's Birthday Celebration!");
 }
 
-.progress::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 100%;
-    background: linear-gradient(to right, #ff4081, #ffd700);
-    animation: load 4s forwards;
-}
-
-@keyframes load { to { width: 100%; } }
-
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    text-align: center;
-}
-
-.hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-}
-
-.hero-content span { color: #ffd700; }
-
-.hero-img {
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    border: 12px solid rgba(255,255,255,0.3);
-    margin-top: 30px;
-    box-shadow: 0 0 60px rgba(255,64,129,0.6);
-}
-
-.memories h2, .message-box h2, .wishes h2 {
-    text-align: center;
-    margin: 40px 0 20px;
-    font-size: 2.2rem;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
-    padding: 20px;
-}
-
-.gallery img {
-    width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: 0.4s;
-}
-
-.gallery img:hover { transform: scale(1.08); }
-
-.message-box p {
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 1.4rem;
-    line-height: 1.8;
-    background: rgba(255,255,255,0.1);
-    padding: 30px;
-    border-radius: 20px;
-}
-
-button {
-    background: #ff4081;
-    color: white;
-    border: none;
-    padding: 16px 40px;
-    font-size: 1.3rem;
-    border-radius: 50px;
-    cursor: pointer;
-    margin: 20px auto;
-    display: block;
+// Wish
+function addWish() {
+    const wishText = document.getElementById('wish').value;
+    if (!wishText) return;
+    
+    const list = document.getElementById('wish-list');
+    const div = document.createElement('div');
+    div.style.background = 'rgba(255,255,255,0.15)';
+    div.style.padding = '15px';
+    div.style.margin = '10px';
+    div.style.borderRadius = '12px';
+    div.textContent = wishText;
+    list.appendChild(div);
+    document.getElementById('wish').value = '';
+    launchConfetti();
 }
