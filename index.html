@@ -7,55 +7,45 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Hero Section -->
+    <!-- Loading -->
+    <div id="loading" class="loading">
+        <h2>Initializing Birthday Surprise for Alok...</h2>
+        <div class="progress"></div>
+    </div>
+
+    <div class="main-content">
+        <!-- Hero -->
         <header class="hero">
             <div class="hero-content">
-                <h1 class="birthday-title">Happy Birthday, Alok! 🎂</h1>
-                <p class="message">Wishing you an amazing year filled with joy, success, and unforgettable moments!</p>
-                <button onclick="playMusic()" class="cta-button">Play Birthday Song 🎵</button>
+                <h1>Happy Birthday,<br><span>Alok!</span> 🎂</h1>
+                <p>Wishing you joy, success & unforgettable moments ❤️</p>
+                <button onclick="startParty()">Start the Celebration 🎉</button>
             </div>
-            <img src="assets/hero-photo.jpg" alt="Alok's Birthday Photo" class="hero-photo">
+            <img src="assets/hero-photo.jpg" alt="Alok" class="hero-img">
         </header>
 
-        <!-- Memories Section -->
         <section class="memories">
             <h2>Beautiful Memories</h2>
             <div class="gallery">
-                <div class="memory-card">
-                    <img src="assets/memory-1.jpg" alt="Memory 1">
-                    <p>Chilling in style</p>
-                </div>
-                <div class="memory-card">
-                    <img src="assets/memory-2.jpg" alt="Memory 2">
-                    <p>Relaxed vibes</p>
-                </div>
-                <div class="memory-card">
-                    <img src="assets/memory-3.jpg" alt="Memory 3">
-                    <p>King of the couch</p>
-                </div>
-                <div class="memory-card">
-                    <img src="assets/memory-4.jpg" alt="Memory 4">
-                    <p>Cool & confident</p>
-                </div>
+                <img src="assets/memory-1.jpg" alt="">
+                <img src="assets/memory-2.jpg" alt="">
+                <img src="assets/memory-3.jpg" alt="">
+                <img src="assets/memory-4.jpg" alt="">
             </div>
         </section>
 
-        <!-- Wish Section -->
-        <section class="wishes">
-            <h2>Send a Wish</h2>
-            <textarea id="wish-input" placeholder="Write your birthday wish for Alok..."></textarea>
-            <button onclick="submitWish()">Send Wish</button>
-            <div id="wishes-display"></div>
+        <section class="message-box">
+            <h2>A Special Wish</h2>
+            <p id="typed-message"></p>
         </section>
 
-        <footer>
-            <p>Made with ❤️ for Alok's special day</p>
-        </footer>
+        <section class="wishes">
+            <h2>Send Your Wish</h2>
+            <textarea id="wish" placeholder="Alok ke liye wish likho..."></textarea>
+            <button onclick="addWish()">Send Wish</button>
+            <div id="wish-list"></div>
+        </section>
     </div>
-
-    <audio id="birthday-music" src="assets/music.mp3" loop></audio>
-    <p style="text-align:center; margin:20px; color:#666;">(assets/music.mp3 add kar sakte ho background music ke liye)</p>
 
     <script src="script.js"></script>
 </body>
