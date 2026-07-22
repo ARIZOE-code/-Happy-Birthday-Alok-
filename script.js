@@ -1,66 +1,63 @@
 // Loading
 setTimeout(() => {
-    document.getElementById('loading').style.display = 'none';
-    document.querySelector('.main-content').style.display = 'block';
-}, 4200);
+    document.getElementById('loading-screen').style.display = 'none';
+    document.querySelector('.content').style.display = 'block';
+}, 3800);
 
-// Typing effect for message
-const message = "Bhagwan tumhe hamesha khush rakhe. Tumhari har wish puri ho. Jaldi ek accha life partner mile aur zindagi khushiyon se bhari rahe. Happy Birthday Alok! ❤️";
-let i = 0;
-const typed = document.getElementById('typed-message');
+// Typing Effect
+const text = "May your life be filled with happiness, success, love and all the beautiful things you deserve. Happy Birthday Alok! ❤️";
+let index = 0;
+const typedElement = document.getElementById('typed-text');
 
-function type() {
-    if (i < message.length) {
-        typed.innerHTML += message.charAt(i);
-        i++;
-        setTimeout(type, 50);
+function typeWriter() {
+    if (index < text.length) {
+        typedElement.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 40);
     }
 }
+setTimeout(typeWriter, 1000);
 
-setTimeout(type, 1000);
-
-// Confetti
-function launchConfetti() {
-    for (let i = 0; i < 200; i++) {
+// Celebration
+function startCelebration() {
+    for (let i = 0; i < 180; i++) {
         setTimeout(() => {
-            const conf = document.createElement('div');
-            conf.textContent = ['🎉','🎊','❤️','✨'][Math.floor(Math.random()*4)];
-            conf.style.position = 'fixed';
-            conf.style.left = Math.random()*100 + 'vw';
-            conf.style.top = '-50px';
-            conf.style.fontSize = '2rem';
-            document.body.appendChild(conf);
-            let y = 0;
-            const speed = 5 + Math.random() * 8;
+            const c = document.createElement('div');
+            c.textContent = '🎉❤️✨🎊';
+            c.style.position = 'fixed';
+            c.style.left = Math.random() * 100 + 'vw';
+            c.style.top = '-50px';
+            c.style.fontSize = '2.5rem';
+            document.body.appendChild(c);
+            
+            let pos = -50;
+            const speed = 6 + Math.random() * 7;
             function fall() {
-                y += speed;
-                conf.style.top = y + 'vh';
-                if (y < 120) requestAnimationFrame(fall);
-                else conf.remove();
+                pos += speed;
+                c.style.top = pos + 'vh';
+                if (pos < 110) requestAnimationFrame(fall);
+                else c.remove();
             }
             fall();
-        }, i*8);
+        }, i * 7);
     }
-}
-
-function startParty() {
-    launchConfetti();
-    alert("🎉 Party Shuru! Enjoy Alok's Birthday Celebration!");
 }
 
 // Wish
-function addWish() {
-    const wishText = document.getElementById('wish').value;
-    if (!wishText) return;
+function sendWish() {
+    const input = document.getElementById('user-wish');
+    const wishesDiv = document.getElementById('wishes');
     
-    const list = document.getElementById('wish-list');
-    const div = document.createElement('div');
-    div.style.background = 'rgba(255,255,255,0.15)';
-    div.style.padding = '15px';
-    div.style.margin = '10px';
-    div.style.borderRadius = '12px';
-    div.textContent = wishText;
-    list.appendChild(div);
-    document.getElementById('wish').value = '';
-    launchConfetti();
+    if (input.value.trim()) {
+        const newWish = document.createElement('div');
+        newWish.style.margin = '12px auto';
+        newWish.style.padding = '15px';
+        newWish.style.background = 'rgba(255,255,255,0.15)';
+        newWish.style.borderRadius = '12px';
+        newWish.style.maxWidth = '600px';
+        newWish.textContent = input.value;
+        wishesDiv.appendChild(newWish);
+        input.value = '';
+        startCelebration();
+    }
 }
