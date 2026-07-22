@@ -1,128 +1,110 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-    color: #333;
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(45deg, #1e3c72, #ff4081);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.loading {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    color: white;
+}
+
+.progress {
+    width: 300px;
+    height: 6px;
+    background: #333;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(to right, #ff4081, #ffd700);
+    animation: load 4s forwards;
+}
+
+@keyframes load { to { width: 100%; } }
 
 .hero {
+    height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 60px 20px;
-    background: rgba(255,255,255,0.95);
-    border-radius: 20px;
-    margin-bottom: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    flex-wrap: wrap;
-}
-
-.hero-content { flex: 1; padding-right: 30px; min-width: 300px; }
-
-.birthday-title {
-    font-size: 3.2rem;
-    color: #e91e63;
-    margin-bottom: 20px;
-    animation: bounce 2s infinite;
-}
-
-.message { font-size: 1.4rem; margin-bottom: 30px; }
-
-.cta-button {
-    background: #ff4081;
-    color: white;
-    border: none;
-    padding: 15px 35px;
-    font-size: 1.3rem;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(233,30,99,0.4);
-}
-
-.cta-button:hover { transform: scale(1.08); background: #f50057; }
-
-.hero-photo {
-    width: 340px;
-    height: 340px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 10px solid white;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
-
-.memories h2 {
+    justify-content: center;
+    position: relative;
     text-align: center;
-    font-size: 2.5rem;
-    margin: 40px 0;
-    color: #e91e63;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.hero-content span { color: #ffd700; }
+
+.hero-img {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 12px solid rgba(255,255,255,0.3);
+    margin-top: 30px;
+    box-shadow: 0 0 60px rgba(255,64,129,0.6);
+}
+
+.memories h2, .message-box h2, .wishes h2 {
+    text-align: center;
+    margin: 40px 0 20px;
+    font-size: 2.2rem;
 }
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    padding: 20px;
 }
 
-.memory-card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
-
-.memory-card:hover { transform: scale(1.05); }
-
-.memory-card img {
+.gallery img {
     width: 100%;
-    height: 260px;
-    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: 0.4s;
 }
 
-.memory-card p {
-    padding: 15px;
-    text-align: center;
-    font-weight: bold;
-    color: #444;
-}
+.gallery img:hover { transform: scale(1.08); }
 
-.wishes {
-    background: white;
-    padding: 40px;
+.message-box p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    margin: 40px 0;
 }
 
-.wishes h2 { text-align: center; margin-bottom: 20px; color: #e91e63; }
-
-#wish-input {
-    width: 100%;
-    height: 130px;
-    padding: 15px;
-    border: 2px solid #ff4081;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-}
-
-button { padding: 12px 25px; font-size: 1.1rem; }
-
-.wish {
-    background: #fff3e0;
-    padding: 15px;
-    margin: 12px 0;
-    border-radius: 10px;
-    border-left: 5px solid #ff4081;
-}
-
-footer { text-align: center; padding: 25px; color: #666; font-style: italic; }
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+button {
+    background: #ff4081;
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
 }
