@@ -3,52 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday, Alok! 🎉</title>
+    <title>Happy Birthday Alok! 🎉</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loader">
-            <h2>Happy Birthday Alok...</h2>
-            <div class="progress-bar"><div class="progress"></div></div>
-        </div>
+    <div class="hero">
+        <h1>Happy Birthday, Alok! 🎂</h1>
+        <img src="assets/hero-photo.jpg" alt="Alok" class="hero-photo">
+        <button onclick="celebrate()">Start Celebration 🎉</button>
     </div>
 
-    <div class="content">
-        <!-- Hero -->
-        <header class="hero">
-            <h1 class="main-title">Happy Birthday,<br>Alok! 🎂</h1>
-            <img src="assets/hero-photo.jpg" alt="Alok" class="hero-photo">
-            <button onclick="startCelebration()" class="cta">Start Celebration 🎉</button>
-        </header>
-
-        <!-- Memories -->
-        <section class="memories">
-            <h2>Beautiful Memories</h2>
-            <div class="gallery">
-                <img src="assets/memory-1.jpg" alt="">
-                <img src="assets/memory-2.jpg" alt="">
-                <img src="assets/memory-3.jpg" alt="">
-                <img src="assets/memory-4.jpg" alt="">
-            </div>
-        </section>
-
-        <!-- Special Message -->
-        <section class="special-msg">
-            <h2>A Wish For You</h2>
-            <p id="typed-text"></p>
-        </section>
-
-        <!-- Wish Box -->
-        <section class="wish-box">
-            <h2>Send Your Wish</h2>
-            <textarea id="user-wish" placeholder="Alok ke liye kuch likho..."></textarea>
-            <button onclick="sendWish()">Send Wish ❤️</button>
-            <div id="wishes"></div>
-        </section>
+    <div class="gallery">
+        <img src="assets/memory-1.jpg" alt="Memory 1">
+        <img src="assets/memory-2.jpg" alt="Memory 2">
+        <img src="assets/memory-3.jpg" alt="Memory 3">
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function celebrate() {
+            for(let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.textContent = ['🎉','❤️','✨','🎊'][Math.floor(Math.random()*4)];
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-50px';
+                    confetti.style.fontSize = '30px';
+                    document.body.appendChild(confetti);
+                    let y = 0;
+                    const fall = setInterval(() => {
+                        y += 8;
+                        confetti.style.top = y + 'vh';
+                        if(y > 120) {
+                            clearInterval(fall);
+                            confetti.remove();
+                        }
+                    }, 20);
+                }, i * 10);
+            }
+        }
+    </script>
 </body>
 </html>
